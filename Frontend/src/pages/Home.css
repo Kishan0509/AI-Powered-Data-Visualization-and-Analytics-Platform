@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-container {
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #1c1c1c;
+  text-align: center;
+  padding: 20px;
+}
+
+.home-overlay {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.home-content h1 span {
+  color: #00b4db;
+}
+
+.home-content p {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.home-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.primary-btn, .secondary-btn {
+  padding: 14px 32px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-btn {
+  background-color: #00b4db;
+  color: white;
+}
+
+.primary-btn:hover {
+  background-color: #0083b0;
+}
+
+.secondary-btn {
+  background-color: white;
+  color: #00b4db;
+  border: 2px solid #00b4db;
+}
+
+.secondary-btn:hover {
+  background-color: #00b4db;
+  color: white;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .home-overlay {
+    padding: 40px 20px;
+  }
+
+  .home-content h1 {
+    font-size: 2rem;
+  }
+
+  .home-content p {
+    font-size: 1.1rem;
+  }
+
+  .primary-btn, .secondary-btn {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
+
+  .home-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

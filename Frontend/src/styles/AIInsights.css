@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.ai-container {
+  padding: 40px 20px;
+  background: #f7f9fc;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.ai-heading {
+  font-size: 2.5rem;
+  color: #0072ff;
+  margin-bottom: 30px;
+}
+
+.ai-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ai-selection select {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.ai-selection select:focus {
+  border-color: #0072ff;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: #00b4db;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background-color: #0083b0;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.insight-card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.insight-card h3 {
+  font-size: 1.4rem;
+  color: #0072ff;
+  margin-bottom: 15px;
+}
+
+.insight-card p {
+  font-size: 1rem;
+  color: #444;
+  margin: 8px 0;
+}
+
+.value-positive {
+  color: #10b981; 
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.value-negative {
+  color: #ef4444; 
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+@media (max-width: 768px) {
+  .ai-selection {
+    flex-direction: column;
+  }
+}

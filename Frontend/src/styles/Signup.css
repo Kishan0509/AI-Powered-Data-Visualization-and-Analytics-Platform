@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #00b4db, #0083b0);
+  font-family: 'Poppins', sans-serif;
+  padding: 20px;
+}
+
+.signup-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 50px 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.signup-card h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.signup-subtext {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.signup-card input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.signup-card input:focus {
+  border-color: #00b4db;
+  outline: none;
+}
+
+.signup-card .btn-primary {
+  width: 100%;
+  background: #00b4db;
+  color: white;
+  padding: 14px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.signup-card .btn-primary:hover {
+  background: #0083b0;
+}
+
+.success-message {
+  color: #10b981;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.error-message {
+  color: #ef4444;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.auth-link {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.auth-link span {
+  color: #00b4db;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-link span:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
