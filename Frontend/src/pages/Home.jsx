@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PageWrapper from "../components/PageWrapper";
 import "./Home.css";
 
 function Home() {
@@ -9,7 +8,7 @@ function Home() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      navigate("/dashboard");
+      navigate("/upload");
     }
   }, [navigate]);
 

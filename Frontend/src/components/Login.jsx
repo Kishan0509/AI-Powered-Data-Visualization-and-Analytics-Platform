@@ -31,7 +31,7 @@ function Login() {
       setMessage(" Login successful! Redirecting...");
       setTimeout(() => {
         if (role === "Admin") {
-          navigate("/dashboard");
+          navigate("/upload");
         } else {
           navigate("/");
         }
@@ -60,7 +60,7 @@ function Login() {
       setMessage(" Google Login Successful! Redirecting...");
       setTimeout(() => {
         if (role === "Admin") {
-          navigate("/dashboard");
+          navigate("/upload");
         } else {
           navigate("/");
         }

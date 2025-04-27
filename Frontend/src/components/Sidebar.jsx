@@ -6,6 +6,8 @@ import "../styles/Sidebar.css";
 function Sidebar() {
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
+  const isLoggedIn = localStorage.getItem("token");
+  if (!isLoggedIn) return null;
 
   return (
     <div className="sidebar">

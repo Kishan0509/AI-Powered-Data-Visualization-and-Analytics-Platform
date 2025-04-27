@@ -1,13 +1,14 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
+import "./MainLayout.css";
 
 function MainLayout({ children }) {
+  const isLoggedIn = localStorage.getItem("token");
+
   return (
-    <div style={{ display: "flex" }}>
-      <Sidebar />
-      <div style={{ marginLeft: "265px", width: "100%" }}>
-        {children}
-      </div>
+    <div className={`main-layout ${isLoggedIn ? 'layout-with-sidebar' : ''}`}>
+      {isLoggedIn && <Sidebar />}
+      <div className="content">{children}</div>
     </div>
   );
 }

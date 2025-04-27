@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import ThreeDGraph from "./ThreeDGraph";
 import { useDropzone } from "react-dropzone";
 import PageWrapper from "../components/PageWrapper";
 import "../styles/UploadExcel.css";
@@ -10,6 +9,7 @@ function UploadExcel() {
   const [data, setData] = useState([]);
   const [manualMode, setManualMode] = useState(false);
   const [manualData, setManualData] = useState([{ name: "", value: "" }]);
+  const [loading, setLoading] = useState(false); 
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -26,8 +26,9 @@ function UploadExcel() {
   });
 
   const handleUpload = async () => {
-    if (manualMode) {
-      try {
+    setLoading(true); 
+    try {
+      if (manualMode) {
         const token = localStorage.getItem("token");
         const res = await axios.post(
           "http://localhost:5000/api/dataset/manual",
@@ -40,16 +41,12 @@ function UploadExcel() {
         );
         setData(res.data.data);
         alert("Manual data uploaded!");
-      } catch (err) {
-        alert("Manual data upload failed!");
-      }
-    } else {
-      if (!file) return alert("Please select a file");
+      } else {
+        if (!file) return alert("Please select a file");
 
-      const formData = new FormData();
-      formData.append("excel", file);
+        const formData = new FormData();
+        formData.append("excel", file);
 
-      try {
         const token = localStorage.getItem("token");
         const res = await axios.post(
           "http://localhost:5000/api/dataset/upload",
@@ -62,9 +59,12 @@ function UploadExcel() {
         );
         setData(res.data.data);
         alert("File upload successful!");
-      } catch (err) {
-        alert("File upload failed!");
       }
+    } catch (err) {
+      console.error("Error uploading file:", err); 
+      alert("File upload failed!");
+    } finally {
+      setLoading(false); 
     }
   };
 
@@ -90,11 +90,25 @@ function UploadExcel() {
           <div className="formContainer">
             {manualData.map((row, index) => (
               <div key={index} className="inputRow">
-                <input type="text" placeholder="Name" value={row.name} onChange={(e) => handleManualChange(index, "name", e.target.value)} className="input"/>
-                <input type="text" placeholder="Value" value={row.value} onChange={(e) => handleManualChange(index, "value", e.target.value)} className="input" />
+                <input
+                  type="text"
+                  placeholder="Name"
+                  value={row.name}
+                  onChange={(e) => handleManualChange(index, "name", e.target.value)}
+                  className="input"
+                />
+                <input
+                  type="text"
+                  placeholder="Value"
+                  value={row.value}
+                  onChange={(e) => handleManualChange(index, "value", e.target.value)}
+                  className="input"
+                />
               </div>
             ))}
-            <button onClick={addManualRow} className="addRowButton"> + Add Row </button>
+            <button onClick={addManualRow} className="addRowButton">
+              + Add Row
+            </button>
           </div>
         ) : (
           <div {...getRootProps()} className="dropzone">
@@ -105,6 +119,8 @@ function UploadExcel() {
         <button onClick={handleUpload} className="uploadButton">
           {manualMode ? "Submit Data" : "Upload File"}
         </button>
+
+        {loading && <div className="loading-indicator">Uploading...</div>} {/* Loading indicator */}
 
         <div className="previewContainer">
           {data.length > 0 && (
@@ -131,9 +147,6 @@ function UploadExcel() {
                 </table>
               </div>
 
-              <div className="graphContainer">
-                <ThreeDGraph data={data} />
-              </div>
             </>
           )}
         </div>

@@ -33,7 +33,7 @@ function Signup() {
       setMessage(" Signup successful! Redirecting...");
       setTimeout(() => {
         if (role === "Admin") {
-          navigate("/dashboard");
+          navigate("/upload");
         } else {
           navigate("/");
         }

@@ -29,10 +29,18 @@ const ThreeDGraph = ({ data }) => {
     directionalLight.position.set(10, 20, 10);
     scene.add(directionalLight);
 
-    const total = data.reduce((sum, item) => sum + item.value, 0);
+    // const total = data.reduce((sum, item) => sum + item.value, 0);
+    // let startAngle = 0;
+
+    let total = 0;
     let startAngle = 0;
+  
+    if (Array.isArray(data) && data.length > 0) {
+      total = data.reduce((sum, item) => sum + (item.value || 0), 0);
+    }
 
     data.forEach((item, i) => {
+      if (isNaN(item.value) || item.value <= 0) return;
       const sliceAngle = (item.value / total) * Math.PI * 2;
 
       const shape = new THREE.Shape();
@@ -72,8 +80,10 @@ const ThreeDGraph = ({ data }) => {
     animate();
 
     return () => {
-      renderer.dispose();
-      mountRef.current.removeChild(renderer.domElement);
+      if (mountRef.current) {
+        renderer.dispose();
+        mountRef.current.removeChild(renderer.domElement);
+      }
     };
   }, [data]);
 

@@ -15,6 +15,11 @@
   font-family: 'Poppins', sans-serif;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 100;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+  display: none;
 }
 
 .sidebar-header {

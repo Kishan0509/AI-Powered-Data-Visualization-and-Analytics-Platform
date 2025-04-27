@@ -18,6 +18,11 @@ body {
   padding: 20px;
 }
 
+.layout-with-sidebar .home-container {
+  padding-left: 250px; 
+}
+
+
 .home-overlay {
   background: rgba(255, 255, 255, 0.85);
   padding: 60px;

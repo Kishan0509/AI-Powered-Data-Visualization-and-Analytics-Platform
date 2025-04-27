@@ -9,32 +9,26 @@ exports.uploadDataset = async (req, res) => {
     if (!req.file) return res.status(400).json({ message: 'No file uploaded' });
 
     const filePath = path.join(__dirname, '../uploads', req.file.filename);
-
     const workbook = XLSX.readFile(filePath);
     const sheet = workbook.Sheets[workbook.SheetNames[0]];
+
     const parsedData = XLSX.utils.sheet_to_json(sheet);
 
-    const processedData = parsedData.map((entry) => ({
-      x: entry['X'], 
-      y: entry['Y'], 
-      z: entry['Z'] || 0, 
-    }));
-
+    console.log("Parsed Data:", parsedData); 
     fs.unlinkSync(filePath);
 
     const newDataset = await Dataset.create({
       datasetName: req.file.originalname,
       userId: req.userId,
-      data: processedData,
+      data: parsedData, 
     });
 
-    res.json({ message: 'File parsed and saved successfully', data: processedData });
+    res.json({ message: 'File parsed and saved successfully', data: parsedData });
   } catch (error) {
     console.error('Upload Error:', error.message);
     return res.status(500).json({ message: 'Server Error', error: error.message });
   }
 };
-
 
 exports.uploadManualDataset = async (req, res) => {
   try {

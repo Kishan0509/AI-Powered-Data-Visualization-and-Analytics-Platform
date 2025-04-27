@@ -1,0 +1,21 @@
+.main-layout {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .layout-with-sidebar .content {
+    margin-left: 250px; 
+    transition: margin-left 0.3s ease;
+  }
+  
+  .content {
+    flex-grow: 1;
+    transition: margin-left 0.3s ease;
+  }
+  
+  @media (max-width: 768px) {
+    .layout-with-sidebar .content {
+      margin-left: 0; 
+    }
+  }
+  
